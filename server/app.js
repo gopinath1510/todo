@@ -1,0 +1,11 @@
+const express=require('express')
+const mongoose=require("mongoose")
+const router=require("./rotes/itemroute")
+const cors=require('cors')
+mongoose.set('strictQuery', true);
+const app=express()
+app.use(cors())
+app.use(express.json())
+app.use('/',router)
+mongoose.connect("mongodb://0.0.0.0:27017/todo").then(()=>{console.log("connected to db")})
+app.listen(3000,()=>{console.log("listeningto port 2000")})
